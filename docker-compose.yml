@@ -1,0 +1,19 @@
+version: '2'
+services:
+  schema-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+#    hostname: schema-server
+    container_name: schema-server
+    ports:
+      - "8000:8000"
+  database:
+    image: postgres:16.1
+    container_name: database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
