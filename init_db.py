@@ -22,7 +22,8 @@ def get_fake_data(count: int = 10) -> list[dict]:
         {
             "aux_user_id": random.randint(1_000_000, 10_000_000),
             "name": fake.name(),
-            "birthday": date_to_days_from_unix_epoch(fake.date_of_birth()),
+            # das generiert nur Daten für Schema 2. Ist das gewollt?
+            "birthday": date_to_days_from_unix_epoch(fake.date_of_birth(minimum_age=18, maximum_age=80)),
             "created_at": datetime_to_europe_berlin_string(fake.date_time_this_decade()),
         }
         for _ in range(count)
