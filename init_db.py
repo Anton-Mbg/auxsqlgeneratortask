@@ -20,10 +20,10 @@ def get_fake_data(count: int = 10) -> list[dict]:
 
     return [
         {
-            "auxUserId": random.randint(1_000_000, 10_000_000),
+            "aux_user_id": random.randint(1_000_000, 10_000_000),
             "name": fake.name(),
             "birthday": date_to_days_from_unix_epoch(fake.date_of_birth()),
-            "createdAt": datetime_to_europe_berlin_string(fake.date_time_this_decade()),
+            "created_at": datetime_to_europe_berlin_string(fake.date_time_this_decade()),
         }
         for _ in range(count)
     ]

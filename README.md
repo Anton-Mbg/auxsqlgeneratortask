@@ -42,8 +42,9 @@ The task is not to write the SQL code itself, but to write a python script, whic
 
 ### Optional requirements
 
-- The script should handle the case, when duplicated entries are present in the raw data. The duplicated entries 
-  should not be added to the transformed table. The script should be able to handle this case without changing the script.
+- The script should handle the case, when duplicated entries are present in the raw data, that is when an 
+  entire entry/row is inserted a second time into the raw table. The duplicated entries should not be added to the 
+  transformed table. The script should be able to handle this case without changing the script.
 - Write unit tests for the script.
 - Write integration tests for the script.
 
@@ -53,15 +54,21 @@ The task is not to write the SQL code itself, but to write a python script, whic
 
 The raw data has the following form and is located in the table 'raw_data' after the initialization of the database:
 
-| id | data                                                                                                                      |
-|----|---------------------------------------------------------------------------------------------------------------------------|
-| 1  | {"auxUserId": 4825155, "name": "Christopher Robles", "birthday": -17998, "createdAt": "2020-09-21T08:35:23.107028+02:00"} |
-| 2  | {"auxUserId": 4997259, "name": "Cory Brown", "birthday": 12622, "createdAt": "2023-05-11T14:24:01.020864+02:00"}          |
-|    |                                                                                                                           |
+| id | data                                                                                                                         |
+|----|------------------------------------------------------------------------------------------------------------------------------|
+| 1  | {"aux_user_id": 4825155, "name": "Christopher Robles", "birthday": -17998, "created_at": "2020-09-21T08:35:23.107028+02:00"} |
+| 2  | {"aux_user_id": 4997259, "name": "Cory Brown", "birthday": 12622, "created_at": "2023-05-11T14:24:01.020864+02:00"}          |
+|    |                                                                                                                              |
 
 The data column is of the json Postgres type. The structure of the json is described in the avro schema definition file,
 which can be downloaded from the schema server. For details about the avro schema specification see
 [this link](https://avro.apache.org/docs/1.11.1/specification/).
+
+Additional remarks about the data:
+- `aux_user_id` is a unique id for each user.
+- `birthday` is the number of days since 1970-01-01.
+- `created_at` is a ISO 8601 timestamp string with Europe/Berlin timezone.
+
 
 ### Schema Server
 
