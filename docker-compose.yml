@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-#    hostname: schema-server
     container_name: schema-server
     ports:
       - "8000:8000"
