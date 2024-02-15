@@ -77,7 +77,10 @@ def requestRawData():
 
 
 schema_Version = asyncio.run(requestLatestSchemaVersion())
-schema = asyncio.run(requestLatestSchema(schema_Version))
+avro_schema = asyncio.run(requestLatestSchema(schema_Version))
+schema = server.
+# Die Data Column muss hier noch entsprechend dem Avro-Schema geparsed werden
+
 
 create_transformed_data_table()
 
